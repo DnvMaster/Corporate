@@ -8,7 +8,7 @@ class IndexController extends CorporateController
 {
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct(new \App\Repositories\MenusRepository(new \App\Models\Menu()));
         $this->bar = 'right';
         $this->template = env('MASTER').'.index';
     }
