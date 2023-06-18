@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Repositories\MenusRepository;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Menu;
 
 class CorporateController extends Controller
 {
@@ -25,7 +27,6 @@ class CorporateController extends Controller
     {
         #  -- menu navigation section  --
         $menu = $this->getMenu();
-        dd($menu);
 
         $navigation = view(env('MASTER').'.navigation')->render();
         $this->vars = Arr::add($this->vars,'navigation',$navigation);
@@ -34,6 +35,23 @@ class CorporateController extends Controller
     protected function getMenu()
     {
         $menu = $this->menus_repository->get();
-        return $menu;
+        #  --- laravel/menu  ---
+        $mBuilder = Menu::make('MyNav',function ($m) use ($menu)
+        {
+            foreach ($menu as $item)
+            {
+                if ($item->parent == 0)
+                {
+                    $m ->add($item->title,$item->path)->id($item->id);
+                } else {
+                    if ($m->find($item->parent))
+                    {
+                        $m->find($item->parent)->add($item->title,$item->path)->id($item->id);
+                    }
+                }
+            }
+        });
+        dd($mBuilder);
+        return $mBuilder;
     }
 }
