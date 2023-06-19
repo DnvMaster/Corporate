@@ -27,15 +27,14 @@ class CorporateController extends Controller
     {
         #  -- menu navigation section  --
         $menu = $this->getMenu();
-
-        $navigation = view(env('MASTER').'.navigation')->render();
+        $navigation = view(env('MASTER').'.navigation')->with('menu',$menu)->render();
         $this->vars = Arr::add($this->vars,'navigation',$navigation);
         return view($this->template)->with($this->vars);
     }
     protected function getMenu()
     {
         $menu = $this->menus_repository->get();
-        #  --- laravel/menu  ---
+        # --- lavary laravel/menu database ---
         $mBuilder = Menu::make('MyNav',function ($m) use ($menu)
         {
             foreach ($menu as $item)
@@ -51,7 +50,6 @@ class CorporateController extends Controller
                 }
             }
         });
-        dd($mBuilder);
         return $mBuilder;
     }
 }

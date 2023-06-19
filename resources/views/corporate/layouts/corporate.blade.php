@@ -64,7 +64,7 @@
 
                 <!-- START LOGO -->
                 <div id="logo" class="group">
-                    <a href="index.html" title="Pink Rio"><img src="images/logo.png" title="Pink Rio" alt="Pink Rio" /></a>
+                    <a href="index.html" title="Pink Rio"><img src="{{ asset(env('MASTER')) }}/images/logo.png" title="Pink Rio" alt="Pink Rio" /></a>
                 </div>
                 <!-- END LOGO -->
 
