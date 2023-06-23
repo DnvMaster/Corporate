@@ -29,12 +29,15 @@ class CorporateController extends Controller
         $menu = $this->getMenu();
         $navigation = view(env('MASTER').'.navigation')->with('menu',$menu)->render();
         $this->vars = Arr::add($this->vars,'navigation',$navigation);
+
+        $footer = view(env('MASTER').'.footer')->render();
+        $this->vars = Arr::add($this->vars,'footer',$footer);
+
         return view($this->template)->with($this->vars);
     }
     protected function getMenu()
     {
         $menu = $this->menus_repository->get();
-        # --- lavary laravel/menu database ---
         $mBuilder = Menu::make('MyNav',function ($m) use ($menu)
         {
             foreach ($menu as $item)

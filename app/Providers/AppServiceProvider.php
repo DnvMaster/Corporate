@@ -23,6 +23,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        \Blade::directive('set',function ($explode)
+        {
+            list($name, $value) = explode(',',$explode);
+            return "<?php $name = $value ?>";
+        });
     }
 }

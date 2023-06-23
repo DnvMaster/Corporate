@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\SlidersRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class IndexController extends CorporateController
 {
-    public function __construct()
+    public function __construct(SlidersRepository $sliders_repository)
     {
         parent::__construct(new \App\Repositories\MenusRepository(new \App\Models\Menu()));
+        $this->sliders_repository = $sliders_repository;
         $this->bar = 'right';
         $this->template = env('MASTER').'.index';
     }
@@ -20,7 +23,26 @@ class IndexController extends CorporateController
      */
     public function index()
     {
+        $dataSlider = $this->getSliders();
+        $sliders = view(env('MASTER').'.sliders')->with('sliders',$dataSlider)->render();
+        $this->vars = Arr::add($this->vars,'sliders',$sliders);
+
         return $this->templateOutput();
+    }
+
+    public function getSliders()
+    {
+        $sliders = $this->sliders_repository->get();
+        if ($sliders->isEmpty())
+        {
+            return false;
+        }
+        $sliders->transform(function ($item, $key)
+        {
+            $item->img = \Config::get('settings.slider_path').'/'.$item->img;
+            return $item;
+        });
+        return $sliders;
     }
 
     /**
