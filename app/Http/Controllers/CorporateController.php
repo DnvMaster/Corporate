@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Repositories\MenusRepository;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Menu;
 
 class CorporateController extends Controller

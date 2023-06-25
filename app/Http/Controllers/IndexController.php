@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\PortfoliosRepository;
 use App\Repositories\SlidersRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Config;
 
 class IndexController extends CorporateController
 {
-    public function __construct(SlidersRepository $sliders_repository)
+    public function __construct(SlidersRepository $sliders_repository, PortfoliosRepository $portfolios_repository)
     {
         parent::__construct(new \App\Repositories\MenusRepository(new \App\Models\Menu()));
         $this->sliders_repository = $sliders_repository;
+        $this->portfolios_repository = $portfolios_repository;
         $this->bar = 'right';
         $this->template = env('MASTER').'.index';
     }
@@ -23,11 +26,21 @@ class IndexController extends CorporateController
      */
     public function index()
     {
+        $portfolios = $this->getPortfolio();
+        $content = view(env('MASTER').'.content')->with('portfolios',$portfolios)->render();
+        $this->vars = Arr::add($this->vars,'content',$content);
+
         $dataSlider = $this->getSliders();
         $sliders = view(env('MASTER').'.sliders')->with('sliders',$dataSlider)->render();
         $this->vars = Arr::add($this->vars,'sliders',$sliders);
 
         return $this->templateOutput();
+    }
+
+    protected function getPortfolio()
+    {
+        $portfolios = $this->portfolios_repository->get('*',Config::get('settings.number_port_count'));
+        return $portfolios;
     }
 
     public function getSliders()
@@ -39,7 +52,7 @@ class IndexController extends CorporateController
         }
         $sliders->transform(function ($item, $key)
         {
-            $item->img = \Config::get('settings.slider_path').'/'.$item->img;
+            $item->img = Config::get('settings.slider_path').'/'.$item->img;
             return $item;
         });
         return $sliders;
