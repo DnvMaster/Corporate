@@ -7,7 +7,7 @@
                 <div class="slide-holder" style="background:  url('{{ asset(env('MASTER')) }}/images/{{ $slider->img }}') no-repeat center center" style="height:483px;">
                     <div class="slide-content-holder inner" style="height:483px;">
                         @if($i % 2 !== 0)
-                            <div class="slide-content-holder-content" style="position: absolute; top:30px;right:650px;"></div>
+                            <div class="slide-content-holder-content" style="position: absolute; top:30px;right:650px;">
                                 @else
                                     <div class="slide-content-holder-content" style="position: absolute; top:80px;left:500px;">
                                         @endif
@@ -21,7 +21,7 @@
                                 </div>
                             </div>
             </li>
-            @set($i,$i=1)
+            @set($i,$i+1)
         @endforeach
     </ul>
 
