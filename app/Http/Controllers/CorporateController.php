@@ -26,8 +26,15 @@ class CorporateController extends Controller
     {
         #  -- menu navigation section  --
         $menu = $this->getMenu();
+
         $navigation = view(env('MASTER').'.navigation')->with('menu',$menu)->render();
         $this->vars = Arr::add($this->vars,'navigation',$navigation);
+
+        if ($this->contentRightBar)
+        {
+            $rightBar = view(env('MASTER').'.rightBar')->with('content_rightBar',$this->contentRightBar)->render();
+            $this->vars = Arr::add($this->vars,'rightBar',$rightBar);
+        }
 
         $footer = view(env('MASTER').'.footer')->render();
         $this->vars = Arr::add($this->vars,'footer',$footer);

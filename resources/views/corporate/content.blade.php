@@ -9,7 +9,7 @@
                             <div class="work-thumbnail">
                                 <a class="thumb"><img src="{{ asset(env('MASTER')) }}/images/projects/{{ $portfolio->img->max }}" alt="0081" title="0081" /></a>
                                 <div class="work-overlay">
-                                    <h3><a href="{{ route('portfolios.show',['alias'=>$portfolio->alias]) }}">{!! $portfolio->title !!}</a></h3>
+                                    <h3><a href="{{ route('portfolios.show',['alias' => $portfolio->alias]) }}">{!! $portfolio->title !!}</a></h3>
                                     <p class="work-overlay-categories"><img src="{{ asset(env('MASTER')) }}/images/projects/categories.png" alt="Categories" /> in: <a href="category.html">{!! $portfolio->filter_alias !!}</a></p>
                                 </div>
                             </div>
@@ -52,5 +52,18 @@
         <!-- END COMMENTS -->
     </div>
 @else
-    <h2>Такой страницы не существует.ы</h2>
+    <div id="content-home" class="content group">
+        <div class="hentry group">
+            <div class="hentry work group portfolio-sticky portfolio-full-description">
+                <div class="work-thumbnail">
+                    <a class="thumb" href="{{ url('/') }}">
+                        <img src="{{ asset(env('MASTER')) }}/images/page-error/page-error.png" alt="Страницы не существует.">
+                    </a>
+                </div>
+            </div>
+            <div class="section portfolio">
+                <h2>Такой страницы не существует.</h2>
+            </div>
+        </div>
+    </div>
 @endif

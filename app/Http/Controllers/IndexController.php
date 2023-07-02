@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ArticlesRepository;
 use App\Repositories\PortfoliosRepository;
 use App\Repositories\SlidersRepository;
 use Illuminate\Http\Request;
@@ -10,11 +11,12 @@ use Config;
 
 class IndexController extends CorporateController
 {
-    public function __construct(SlidersRepository $sliders_repository, PortfoliosRepository $portfolios_repository)
+    public function __construct(SlidersRepository $sliders_repository, PortfoliosRepository $portfolios_repository, ArticlesRepository $articles_repository)
     {
         parent::__construct(new \App\Repositories\MenusRepository(new \App\Models\Menu()));
         $this->sliders_repository = $sliders_repository;
         $this->portfolios_repository = $portfolios_repository;
+        $this->articles_repository = $articles_repository;
         $this->bar = 'right';
         $this->template = env('MASTER').'.index';
     }
@@ -33,6 +35,9 @@ class IndexController extends CorporateController
         $dataSlider = $this->getSliders();
         $sliders = view(env('MASTER').'.sliders')->with('sliders',$dataSlider)->render();
         $this->vars = Arr::add($this->vars,'sliders',$sliders);
+
+        $articles = $this->getArticles();
+        $this->contentRightBar = view(env('MASTER').'.indexBar')->with('articles',$articles)->render();
 
         return $this->templateOutput();
     }
@@ -56,6 +61,12 @@ class IndexController extends CorporateController
             return $item;
         });
         return $sliders;
+    }
+
+    public function getArticles()
+    {
+        $articles = $this->articles_repository->get(['title','created_at','img','alias'], Config::get('settings.rightBar'));
+        return $articles;
     }
 
     /**
