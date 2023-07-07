@@ -2,15 +2,12 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Portfolio extends Model
 {
-    use HasFactory;
-
     public function filter()
     {
-        return $this->belongsTo('App\Filter','filter_alias','alias');
+        return $this->belongsTo(Filter::class,'filter_alias','alias');
     }
 }
