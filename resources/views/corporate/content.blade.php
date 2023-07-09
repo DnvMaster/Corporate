@@ -10,7 +10,7 @@
                                 <a class="thumb"><img src="{{ asset(env('MASTER')) }}/images/projects/{{ $portfolio->img->max }}" alt="0081" title="0081" /></a>
                                 <div class="work-overlay">
                                     <h3><a href="{{ route('portfolios.show',['alias' => $portfolio->alias]) }}">{!! $portfolio->title !!}</a></h3>
-                                    <p class="work-overlay-categories"><img src="{{ asset(env('MASTER')) }}/images/projects/categories.png" alt="Categories" /> in: <a href="#">{!! $portfolio->filter->title !!}</a></p>
+                                    <p class="work-overlay-categories"><img src="{{ asset(env('MASTER')) }}/images/categories.png" alt="Categories" /> in: <a href="#">{!! $portfolio->filter->title !!}</a></p>
                                 </div>
                             </div>
                             <div class="work-description">
