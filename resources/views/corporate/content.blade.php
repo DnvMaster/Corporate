@@ -2,7 +2,7 @@
     <div id="content-home" class="content group">
         <div class="hentry group">
             <div class="section portfolio">
-                <h3 class="title">Latest projects</h3>
+                <h3 class="title">{{ trans('russian.Latest_projects') }}</h3>
                 @foreach($portfolios as $key => $portfolio)
                     @if($key == 0)
                         <div class="hentry work group portfolio-sticky portfolio-full-description">
