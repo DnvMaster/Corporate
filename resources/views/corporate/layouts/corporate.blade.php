@@ -9,7 +9,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes" />
-        <title>Pink Rio | A strong, powerful and multiporpose WordPress Theme</title>
+        <title>{{ (isset($title)) ? $title : 'Pink Rio template' }}</title>
+        <meta name="keywords" content="{{ (isset($keywords)) ? $keywords : '' }}">
+        <meta name="description" content="{{ (isset($description)) ? $description : '' }}">
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset(env('MASTER')) }}/images/favicon.ico" />
         <link rel="icon" type="image/x-icon" href="{{ asset(env('MASTER')) }}/images/favicon.ico" />
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset(env('MASTER')) }}/apple-touch-icon-144x.png" />
@@ -91,7 +93,7 @@
         <!-- START SLIDER -->
        @yield('sliders')
         <!-- START PRIMARY -->
-        <div id="primary" class="sidebar-right">
+        <div id="primary" class="sidebar-{{ isset($bar) ? $bar : 'no' }}">
             <div class="inner group">
                 <!-- START CONTENT -->
                 @yield('content')

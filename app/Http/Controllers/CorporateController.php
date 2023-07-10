@@ -13,9 +13,14 @@ class CorporateController extends Controller
     protected $sliders_repository;
     protected $articles_repository;
     protected $menus_repository;
+
+    protected $title;
+    protected $keywords;
+    protected $description;
+
     protected $template;
     protected $vars = array();
-    protected $bar = false;
+    protected $bar = 'no';
     protected $contentRightBar = false;
     protected $contentLeftBar = false;
     public function __construct(MenusRepository $menus_repository)
@@ -29,6 +34,12 @@ class CorporateController extends Controller
 
         $navigation = view(env('MASTER').'.navigation')->with('menu',$menu)->render();
         $this->vars = Arr::add($this->vars,'navigation',$navigation);
+
+        $this->vars = Arr::add($this->vars,'bar', $this->bar);
+
+        $this->vars = Arr::add($this->vars,'title', $this->title);
+        $this->vars = Arr::add($this->vars,'keywords', $this->keywords);
+        $this->vars = Arr::add($this->vars,'description', $this->description);
 
         if ($this->contentRightBar)
         {

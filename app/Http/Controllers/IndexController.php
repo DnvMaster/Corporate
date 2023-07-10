@@ -36,6 +36,10 @@ class IndexController extends CorporateController
         $sliders = view(env('MASTER').'.sliders')->with('sliders',$dataSlider)->render();
         $this->vars = Arr::add($this->vars,'sliders',$sliders);
 
+        $this->title = 'Pink Rio | A strong, powerful and multiporpose WordPress Theme';
+        $this->keywords = 'Pink Rio Template';
+        $this->description = 'Nam id quam a odio euismod pellentesque. Etiam congue rutrum risus non vestibulum. Quisque a diam at ligula blandit consequat.';
+
         $articles = $this->getArticles();
         $this->contentRightBar = view(env('MASTER').'.indexBar')->with('articles',$articles)->render();
 
