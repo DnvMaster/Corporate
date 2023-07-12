@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ArticlesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +16,5 @@ use App\Http\Controllers\IndexController;
 */
 
 Route::resource('/',IndexController::class,['only'=>['index'],'names'=>['index'=>'home']]);
-Route::resource('portfolios','PortfolioController::class',['parameters'=>['portfolios'=>'alias']]);
-Route::resource('articles','ArticlesController::class',['parameters'=>['articles'=>'alias']]);
+Route::resource('portfolios','PortfoliosController::class',['parameters'=>['portfolios'=>'alias']]);
+Route::resource('/articles',ArticlesController::class,['parameters'=>['articles'=>'alias']]);

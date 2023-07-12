@@ -7,12 +7,16 @@ use Config;
 abstract class Repository
 {
     protected $model = false;
-    public function get($select = '*', $number = false)
+    public function get($select = '*', $number = false, $pagination = false)
     {
         $builder = $this->model->select($select);
         if ($number)
         {
             $builder->take($number);
+        }
+        if ($pagination)
+        {
+            return $this->check($builder->paginate(Config::get('settings.paginate')));
         }
         return $this->check($builder->get());
     }

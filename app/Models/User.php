@@ -41,6 +41,11 @@ class User extends Authenticatable
         'two_factor_secret',
     ];
 
+    public function articles()
+    {
+        return $this->hasMany(Article::class);
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

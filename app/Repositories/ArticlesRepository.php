@@ -6,8 +6,8 @@ use App\Models\Article;
 
 class ArticlesRepository extends Repository
 {
-    public function __construct(Article  $article)
+    public function __construct(Article  $articles)
     {
-        $this->model = $article;
+        $this->model = $articles;
     }
 }
