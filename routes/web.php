@@ -17,4 +17,5 @@ use App\Http\Controllers\ArticlesController;
 
 Route::resource('/',IndexController::class,['only'=>['index'],'names'=>['index'=>'home']]);
 Route::resource('portfolios','PortfoliosController::class',['parameters'=>['portfolios'=>'alias']]);
-Route::resource('/articles',ArticlesController::class,['parameters'=>['articles'=>'alias']]);
+Route::resource('articles',ArticlesController::class,['parameters'=>['articles'=>'alias']]);
+Route::get('articles/category/{category_alias}',['uses'=>'ArticlesController@index','as'=>'articlesCategory']);

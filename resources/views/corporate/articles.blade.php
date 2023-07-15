@@ -1,4 +1,4 @@
-@extends(view('corporate.layouts.corporate'))
+@extends(env('MASTER').'.layouts.corporate')
 
 @section('navigation')
     {!! $navigation !!}
@@ -6,10 +6,6 @@
 
 @section('content')
     {!! $content !!}
-@endsection
-
-@section('bar')
-    {!! $rightBar !!}
 @endsection
 
 @section('footer')

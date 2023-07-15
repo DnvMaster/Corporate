@@ -21,14 +21,14 @@ class ArticlesController extends CorporateController
     public function index()
     {
         $articles = $this->getArticles();
-        $content = view('corporate.articles_content')->with('articles',$articles)->render();
+        $content = view(env('MASTER').'.articles_content')->with('articles',$articles)->render();
         $this->vars = Arr::add($this->vars,'content',$content);
 
         return $this->templateOutput();
     }
     public function getArticles($alias = false)
     {
-        $articles = $this->articles_repository->get(['title','alias','created_at','img','desc'],false,true);
+        $articles = $this->articles_repository->get(['title','alias','created_at','img','desc','user_id','category_id'],false,true);
         if ($articles)
         {
            // $articles->load('user','category','comments');
