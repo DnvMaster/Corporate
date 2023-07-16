@@ -7,6 +7,7 @@ use App\Repositories\MenusRepository;
 use App\Repositories\PortfoliosRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Lang;
 
 class ArticlesController extends CorporateController
 {
@@ -28,7 +29,7 @@ class ArticlesController extends CorporateController
     }
     public function getArticles($alias = false)
     {
-        $articles = $this->articles_repository->get(['title','alias','created_at','img','desc','user_id','category_id'],false,true);
+        $articles = $this->articles_repository->get(['id','title','alias','created_at','img','desc','user_id','category_id'],false,true);
         if ($articles)
         {
            // $articles->load('user','category','comments');
