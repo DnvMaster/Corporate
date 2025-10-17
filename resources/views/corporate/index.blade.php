@@ -1,0 +1,1 @@
+@extends(env('CORP').'.layouts.app')

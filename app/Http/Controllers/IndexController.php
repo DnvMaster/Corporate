@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 class IndexController extends SiteController
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->bar = 'right';
+        $this->template = env('CORP').'.index';
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,7 @@ class IndexController extends SiteController
      */
     public function index()
     {
-        //
+        return $this->renderOutput();
     }
 
     /**
