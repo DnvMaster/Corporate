@@ -4,86 +4,66 @@ namespace Corp\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Corp\Repositories\MenusRepository;
+use Corp\Repositories\SlidersRepository;
 
 class IndexController extends SiteController
 {
-    public function __construct()
+    public function __construct(SlidersRepository $sliders_repository)
     {
         parent::__construct(new \Corp\Repositories\MenusRepository(new \Corp\Menu()));
         $this->bar = 'right';
+        $this->sliders_repository = $sliders_repository;
         $this->template = env('CORP').'.index';
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
+        $sliderItems = $this->getSliders();
+        $sliders = view(env('CORP').'.sliders')->with('sliders',$sliderItems)->render();
+        $this->vars = array_add($this->vars,'sliders', $sliders);
+
         return $this->renderOutput();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected function getSliders()
+    {
+        $sliders = $this->sliders_repository->get();
+        if($sliders->isEmpty()) {
+            return false;
+        }
+        $sliders->transform(function($item,$key) 
+        {
+            $item->img = \Config::get('settings.slider_path').'/'.$item->img;
+            return $item;
+        });
+        return $sliders;
+    }
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
