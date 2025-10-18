@@ -1,21 +1,28 @@
 @if(count($sliders) > 0)
     <div id="slider-cycle" class="slider cycle no-responsive slider_cycle group" style="height:485px;">
         <ul class="slider">
+			@set($i,1)
             @foreach($sliders as $slider)
                 <li>
                     <div class="slide-holder" style="background:  url('{{ asset(env('CORP')) }}/images/{{ $slider->img }}') no-repeat center center" style="height:483px;">
 				        <div class="slide-content-holder inner" style="height:483px;">
-				            <div class="slide-content-holder-content" style="position: absolute; top:30px;right:650px;">
-				                <div class="slide-title">
-				                    {!! $slider->title !!}
-				                </div>
-				                <div class="slide-content" style="color:#fff">
-				                    <p>{!! $slider->description !!}</p>
-				                </div>
-				            </div>
-				        </div>
-				    </div>
-                </li>  
+							@if($i % 2 !== 0)
+								<div class="slide-content-holder-content" style="position: absolute; top:30px;right:650px;">
+							@else
+								<div class="slide-content-holder-content" style="position: absolute; top:80px;left:500px;">
+							@endif 
+						<div>
+						<div class="slide-title">
+							{!! $slider->title !!}
+						</div>
+						<div class="slide-content" style="color:#fff">
+							<p>{!! $slider->description !!}</p>
+						</div>   
+					</div>	
+				</div>
+				</div>
+				</li>
+				@set($i,$i+1)  
             @endforeach
         </ul>
     </div>
