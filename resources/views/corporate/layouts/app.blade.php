@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-	<!--[if IE 6]><html id="ie6" class="ie" dir="ltr" lang="en-US"><![endif]-->
-	<!--[if IE 7]><html id="ie7" class="ie" dir="ltr" lang="en-US"><![endif]-->
-	<!--[if IE 8]><html id="ie8" class="ie" dir="ltr" lang="en-US"><![endif]-->
-	<!--[if IE 9]><html id="ie9" class="ie" dir="ltr" lang="en-US"><![endif]-->
-	<!--[if gt IE 9]><html class="ie" dir="ltr" lang="en-US"><![endif]-->
-	<!--[if !IE]><html dir="ltr" lang="en-US"><![endif]-->
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes" />
@@ -47,103 +41,19 @@
     <body class="no_js responsive page-template-home-php stretched">
         <div class="bg-shadow">
             <div id="wrapper" class="group">
-                <!-- START HEADER -->
-                <div id="header" class="group">
-                    <div class="group inner">
-                        <div id="logo" class="group">
-                            <a href="{{ url('/') }}" title="Pink Rio"><img src="{{ asset('corporate/images/logo.png') }}" title="Pink Rio" alt="Pink Rio" /></a>
-                        </div>
-                        <div id="sidebar-header" class="group">
-                            <div class="widget-first widget yit_text_quote">
-                                <blockquote class="text-quote-quote">&#8220;The caterpillar does all the work but the butterfly gets all the publicity.&#8221;</blockquote>
-                                <cite class="text-quote-author">George Carlin</cite>
-                            </div>
-                        </div>
-                        <div class="clearer"></div>
-                        <hr />
-                        @yield('navigation')
-                        <div id="header-shadow"></div>
-                        <div id="menu-shadow"></div>
-                    </div>
-                    
-                </div>
-                <!-- END HEADER -->
+                @include('corporate.header')
 				@yield('sliders')
-				<!-- START PRIMARY -->
 				<div id="primary" class="sidebar-right">
 				    <div class="inner group">
 				        @yield('content')
-				        <!-- START SIDEBAR -->
-				        <div class="sidebar group">
-				            
-				            <div class="widget-first widget recent-posts">
-				                <h3>From our blog</h3>
-				                <div class="recent-post group">
-				                    <div class="hentry-post group">
-				                        <div class="thumb-img"><img src="{{ asset('corporate/images/articles/001-55x55.png') }}" alt="001" title="001" /></div>
-				                        <div class="text">
-				                            <a href="article.html" title="Section shortcodes &amp; sticky posts!" class="title">Section shortcodes &amp; sticky posts!</a>
-				                            <p class="post-date">September 24, 2012</p>
-				                        </div>
-				                    </div>
-				                    <div class="hentry-post group">
-				                        <div class="thumb-img"><img src="{{ asset('corporate/images/articles/003-55x55.jpg') }}" alt="003" title="003" /></div>
-				                        <div class="text">
-				                            <a href="article.html" title="Nice &amp; Clean. The best for your blog!" class="title">Nice &amp; Clean. The best for your blog!</a>
-				                            <p class="post-date">September 24, 2012</p>
-				                        </div>
-				                    </div>
-				                    <div class="hentry-post group">
-				                        <div class="thumb-img"><img src="{{ asset('corporate/images/articles/0037-55x55.jpg') }}" alt="0037" title="0037" /></div>
-				                        <div class="text">
-				                            <a href="article.html" title="Another theme by YIThemes!" class="title">Another theme by YIThemes!</a>
-				                            <p class="post-date">September 24, 2012</p>
-				                        </div>
-				                    </div>
-				                </div>
-				            </div>
-				            
-				            <div class="widget-last widget text-image">
-				                <h3>Customer support</h3>
-				                <div class="text-image" style="text-align:left"><img src="{{ asset('corporate/images/callus.gif') }}" alt="Customer support" /></div>
-				                <p>Proin porttitor dolor eu nibh lacinia at ultrices lorem venenatis. Sed volutpat scelerisque vulputate. </p>
-				            </div>
-				            
-				        </div>
-				        <!-- END SIDEBAR -->
-				        <!-- START EXTRA CONTENT -->
-				        <!-- END EXTRA CONTENT -->
+				        @yield('bar')
 				    </div>
 				</div>
-				<!-- END PRIMARY -->
-				
-				<!-- START COPYRIGHT -->
-                <div id="copyright">
-                    <div class="inner group">
-                        <div class="left">
-                            <a href="http://yithemes.com/?ddownload=2046&ap_id=pinkrio-html"><strong>Download the free version for Wordpress</strong></a>
-                        </div>
-                        <div class="right">
-                            <a href="#" class="socials-small facebook-small" title="Facebook">facebook</a>
-                            <a href="#" class="socials-small rss-small" title="Rss">rss</a>
-                            <a href="#" class="socials-small twitter-small" title="Twitter">twitter</a>
-                            <a href="#" class="socials-small flickr-small" title="Flickr">flickr</a>
-                            <a href="#" class="socials-small skype-small" title="Skype">skype</a>
-                            <a href="#" class="socials-small google-small" title="Google">google</a>
-                            <a href="#" class="socials-small pinterest-small" title="Pinterest">pinterest</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END COPYRIGHT -->
+				@yield('footer')
             </div>
-            <!-- END WRAPPER -->
         </div>
-        <!-- END BG SHADOW -->
-        
         <script type="text/javascript" src="{{ asset('corporate/js/jquery.custom.js') }}"></script>
         <script type="text/javascript" src="{{ asset('corporate/js/contact.js') }}"></script>
         <script type="text/javascript" src="{{ asset('corporate/js/jquery.mobilemenu.js') }}"></script> 
-        
     </body>
-    <!-- END BODY -->
 </html>

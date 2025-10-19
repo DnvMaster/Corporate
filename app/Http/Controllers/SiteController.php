@@ -27,6 +27,15 @@ class SiteController extends Controller
         $menu = $this->getMenu();
         $navigation = view(env('CORP').'.navigation')->with('menu',$menu)->render();
         $this->vars = array_add($this->vars,'navigation',$navigation);
+
+        if($this->contentRightBar) {
+            $rightBar = view(env('CORP').'.rightBar')->with('content_rightBar',$this->contentRightBar)->render();
+            $this->vars = array_add($this->vars,'rightBar',$rightBar);
+        }
+
+        $footer = view(env('CORP').'.footer')->render();
+        $this->vars = array_add($this->vars,'footer',$footer);
+
         return view($this->template)->with($this->vars);
     }
 
