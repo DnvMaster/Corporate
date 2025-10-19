@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 
 class SiteController extends Controller
 {
+    protected $title;
+    protected $keywords;
+    protected $description;
     protected $portfolios_repository;
     protected $sliders_repository;
     protected $articles_repository;
@@ -15,7 +18,7 @@ class SiteController extends Controller
     protected $vars;
     protected $contentRightBar = false;
     protected $contentLeftBar = false;
-    protected $bar = false;
+    protected $bar = 'no';
 
     public function __construct(MenusRepository $menus_repository)
     {
@@ -32,6 +35,12 @@ class SiteController extends Controller
             $rightBar = view(env('CORP').'.rightBar')->with('content_rightBar',$this->contentRightBar)->render();
             $this->vars = array_add($this->vars,'rightBar',$rightBar);
         }
+
+        $this->vars = array_add($this->vars,'bar',$this->bar);
+
+        $this->vars = array_add($this->vars,'title',$this->title);
+        $this->vars = array_add($this->vars,'keywords',$this->keywords);
+        $this->vars = array_add($this->vars,'description',$this->description);
 
         $footer = view(env('CORP').'.footer')->render();
         $this->vars = array_add($this->vars,'footer',$footer);

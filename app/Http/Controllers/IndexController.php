@@ -23,6 +23,10 @@ class IndexController extends SiteController
     
     public function index()
     {
+        $this->title = 'DnvMaster - Главная';
+        $this->keywords = 'DnvMaster, Laravel, MySQL, Bootstrap, Template';
+        $this->description = 'DnvMaster - Это создание первоклассных проектов на фреймворке Laravel, MySQL, Bootstrap';
+
         $sliderItems = $this->getSliders();
         $sliders = view(env('CORP').'.sliders')->with('sliders',$sliderItems)->render();
         $this->vars = array_add($this->vars,'sliders', $sliders);
