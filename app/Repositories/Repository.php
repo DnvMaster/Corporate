@@ -8,11 +8,14 @@ abstract class Repository
 {
     protected $model = false;
 
-    public function get($select = '*',$take = false, $pagination = false)
+    public function get($select = '*', $take = false, $pagination = false)
     {
         $builder = $this->model->select($select);
         if($take) {
             $builder->take($take);
+        }
+        if($pagination) {
+            return $this->check($builder->paginate(Config::get('settings.paginate')));
         }
         return $this->check($builder->get());
     }
@@ -31,7 +34,6 @@ abstract class Repository
             return $item;
         });
         return $result;
-
     }
 
 }
