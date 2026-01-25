@@ -1,0 +1,1 @@
+@extends('corporate.layouts.corporate')
