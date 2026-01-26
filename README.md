@@ -1,1 +1,0 @@
-## Corporate - blog / Laravel 12
