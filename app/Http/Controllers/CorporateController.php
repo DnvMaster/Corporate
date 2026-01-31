@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\MenusRepository;
+use Lavary\Menu\Facade as Menu;
 use Illuminate\Http\Request;
+use App\Repositories\MenusRepository;
 use Illuminate\Support\Arr;
 
 class CorporateController extends Controller
-{
+{   
     protected $menus_repository;
-    protected $sliders_repository;
-    protected $portfolios_repository;
-    protected $articles_repository;
     protected $template;
     protected $vars = array();
     protected $leftBar = false;
@@ -26,16 +24,26 @@ class CorporateController extends Controller
     protected function Output()
     {
         $menu = $this->getMenu();
-        dd($menu);
-        $header = view('corporate.header')->render();
+        $header = view('corporate.header', compact('menu'))->render();
         $this->vars = Arr::add($this->vars,'header',$header);
 
-        return view($this->template)->with($this->vars);
+        return view($this->template, $this->vars);
     }
 
     protected function getMenu()
     {
-        $menu = $this->menus_repository->get();
-        return $menu;
+        $menu = $this->menus_repository->getAll();
+        $menuBuilder = Menu::make('MyNav', function($m) use($menu) {
+            foreach($menu as $item) {
+                if($item->parent == 0) {
+                    $m->add($item->title,$item->path)->id($item->id);
+                } else {
+                    if($m->find($item->parent)) {
+                        $m->find($item->parent)->add($item->title,$item->path)->id($item->id);
+                    }
+                }
+            }
+        });
+        return $menuBuilder;
     }
 }
