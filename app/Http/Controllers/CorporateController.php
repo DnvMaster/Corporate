@@ -10,6 +10,7 @@ use Illuminate\Support\Arr;
 class CorporateController extends Controller
 {   
     protected $menus_repository;
+    protected $sliders_repository;
     protected $template;
     protected $vars = array();
     protected $leftBar = false;
@@ -35,11 +36,11 @@ class CorporateController extends Controller
         $menu = $this->menus_repository->getAll();
         $menuBuilder = Menu::make('MyNav', function($m) use($menu) {
             foreach($menu as $item) {
-                if($item->parent == 0) {
-                    $m->add($item->title,$item->path)->id($item->id);
+                if($item['parent'] == 0) {
+                    $m->add($item['title'],$item['path'])->id($item['id']);
                 } else {
-                    if($m->find($item->parent)) {
-                        $m->find($item->parent)->add($item->title,$item->path)->id($item->id);
+                    if($m->find($item['parent'])) {
+                        $m->find($item['parent'])->add($item['title'],$item['path'])->id($item['id']);
                     }
                 }
             }
