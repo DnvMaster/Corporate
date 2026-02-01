@@ -12,10 +12,11 @@ class CorporateController extends Controller
     protected $menus_repository;
     protected $sliders_repository;
     protected $portfolios_repository;
+    protected $articles_repository;
     protected $template;
     protected $vars = array();
-    protected $leftBar = false;
-    protected $rightBar = false;
+    protected $contentLeftBar = false;
+    protected $contentRightBar = false;
     protected $bar = false;
 
     protected function __construct(MenusRepository $menus_repository)
@@ -28,6 +29,11 @@ class CorporateController extends Controller
         $menu = $this->getMenu();
         $header = view('corporate.header', compact('menu'))->render();
         $this->vars = Arr::add($this->vars,'header',$header);
+
+        if($this->contentRightBar) {
+            $rightBar = view('corporate.rightBar')->with('content_rightBar',$this->contentRightBar)->render();
+            $this->vars = Arr::add($this->vars,'rightBar',$rightBar);
+        }
 
         return view($this->template, $this->vars);
     }
