@@ -9,6 +9,6 @@ class Portfolio extends Model
 {
     public function filter()
     {
-       return $this->belongsTo(Filter::class, 'filter_alias', 'alias')->withDefault([ 'alias' => 'Ошибка - не существует' ]);
+       return $this->belongsTo(Filter::class, 'filter_alias', 'alias');
     }
 }
