@@ -1,8 +1,11 @@
 <!DOCTYPE html>
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes" />
-        <title>Pink Rio | A strong, powerful and multiporpose WordPress Theme</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
+        <title>{{ (isset($title)) ? $title : 'DnvMaster' }}</title>
+        <meta name="keywords" content="{{ (isset($keywords)) ? $keywords : '' }}">
+        <meta name="description" content="{{ (isset($description)) ? $description : '' }}">
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('corporate/images/favicon.ico') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('corporate/images/favicon.ico') }}">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('corporate/apple-touch-icon-144x.png') }}">
@@ -40,36 +43,17 @@
     </head>
     <body class="no_js responsive page-template-home-php stretched">
         <div class="bg-shadow">
-            <!-- START WRAPPER -->
             <div id="wrapper" class="group">
                 @yield('header')
                 @yield('sliders')
-				<div id="primary" class="sidebar-right">
+				<div id="primary" class="sidebar-{{ isset($bar) ? $bar : 'No bar' }}">
 				    <div class="inner group">
 				        @yield('content')
 				        @yield('bar')
 				    </div>
 				</div>
-				<!-- START COPYRIGHT -->
-                <div id="copyright">
-                    <div class="inner group">
-                        <div class="left">
-                            <a href="http://yithemes.com/?ddownload=2046&ap_id=pinkrio-html"><strong>Download the free version for Wordpress</strong></a>
-                        </div>
-                        <div class="right">
-                            <a href="#" class="socials-small facebook-small" title="Facebook">facebook</a>
-                            <a href="#" class="socials-small rss-small" title="Rss">rss</a>
-                            <a href="#" class="socials-small twitter-small" title="Twitter">twitter</a>
-                            <a href="#" class="socials-small flickr-small" title="Flickr">flickr</a>
-                            <a href="#" class="socials-small skype-small" title="Skype">skype</a>
-                            <a href="#" class="socials-small google-small" title="Google">google</a>
-                            <a href="#" class="socials-small pinterest-small" title="Pinterest">pinterest</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- END COPYRIGHT -->
+				@yield('footer')
             </div>
-            <!-- END WRAPPER -->
         </div>
         <script type="text/javascript" src="{{ asset('corporate/js/jquery.custom.js') }}"></script>
         <script type="text/javascript" src="{{ asset('corporate/js/contact.js') }}"></script>
