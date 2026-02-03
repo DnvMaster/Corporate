@@ -27,7 +27,7 @@ class IndexController extends CorporateController
     {
         $this->title = 'Корпоративный блог';
         $this->keywords = 'Корпоративный, Блог, Пользователи, Пользователь, Статьи, Портфолио, Комментарии';
-        $this->description = 'Корпаративный блог объединяет всех пользователей и каждого пользователя, предлагая актуальные статьи и демонстрируя портфолио проектов для вдохновения и развития."';
+        $this->description = 'Корпоративный блог объединяет всех пользователей и каждого пользователя, предлагая актуальные статьи и демонстрируя портфолио проектов для вдохновения и развития."';
         $getSliders = $this->getSliders();
         $sliders = view('corporate.sliders',compact('getSliders'))->render();
         $this->vars = Arr::add($this->vars,'sliders',$sliders);
