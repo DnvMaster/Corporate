@@ -16,4 +16,5 @@ Route::controller(ArticlesController::class)->group(function()
 {
     Route::get('articles','index')->name('articles');
     Route::get('articles/show/{id}','show')->name('articles.show');
+    Route::get('articles/category/{alias}', 'showCategory')->name('articles.category');
 });
