@@ -94,5 +94,8 @@
     "The site was created using the template Pink Rio template and the Laravel 12":"Сайт создан с использованием шаблона Pink Rio и Laravel 12",
     "View all posts in":"Посмотреть публикации из категории ",
     "Comment on Section shortcodes &amp; sticky posts!":"Оставляйте свои комментарии в категориях и сообщениях",
-    "No comments":"Комментарий|Комментария|Комментариев"
+    "No comments":"Комментарий|Комментария|Комментариев",
+    "Read more":"Подробнее",
+    "Previous":"Предыдущая",
+    "Next":"Следующая"
 }
