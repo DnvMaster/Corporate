@@ -16,6 +16,7 @@ class CorporateController extends Controller
     protected $sliders_repository;
     protected $portfolios_repository;
     protected $articles_repository;
+    protected $comments_repository;
     protected $template;
     protected $vars = array();
     protected $contentLeftBar = false;

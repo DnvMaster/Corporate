@@ -24,23 +24,27 @@
 				<div class="clear"></div>
 			</div>
 		@endforeach
+		<link rel="stylesheet" href="{{ asset('corporate/css/bootstrap.min.css') }}">
 		<div class="general-pagination group">
 			@if($getArticles->lastPage() > 1)
-				@if($getArticles->currentPage() !== 1)
-					<a href="{{ $getArticles->url($getArticles->currentPage() - 1) }}">{{ __('Previous') }}</a>
-				@endif
-				@for($i = 1; $i <= $getArticles->lastPage(); $i++)
-					@if($getArticles->currentPage() == $i)
-						<a class="selected disabled">{{ $i }}</a>
-					@else
-						<a href="{{ $getArticles->url($i) }}">{{ $i }}</a>
+				<ul class="pagination">
+					@if($getArticles->currentPage() !== 1)
+						<li><a href="{{ $getArticles->url($getArticles->currentPage() - 1) }}" aria-label="Previous">{{ __('pagination.previous')}}</a></li>
 					@endif
-				@endfor
-				@if($getArticles->currentPage() !== 1)
-					<a href="{{ $getArticles->url($getArticles->currentPage() + 1) }}">{{ __('Next') }}</a>
-				@endif
+					@for($i = 1; $i <= $getArticles->lastPage(); $i++)
+						@if($getArticles->currentPage() == $i)
+							<li><a class="selected disabled">{{ $i }}</a></li>
+						@else
+							<li><a href="{{ $getArticles->url($i) }}">{{ $i }}</a></li>
+						@endif
+					@endfor
+					@if($getArticles->currentPage() !== 1)
+						<li><a href="{{ $getArticles->url($getArticles->currentPage() + 1) }}" aria-label="Next">{{ __('pagination.next')}}</a></li>
+					@endif
+				</ul>
 			@endif
 		</div>
+		<script src="{{ asset('corporate/js/bootstrap.min.js') }}"></script>
 		@else
 		@include('corporate.articles_no')
 	@endif

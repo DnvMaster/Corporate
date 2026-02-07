@@ -148,7 +148,7 @@ html { min-height:101% }
 }
 
 .page-template-home-php #header-shadow, .home #header-shadow { display: none; }
-.stretched #header .inner { padding: 0px; }
+.stretched #header .inner { padding: 30px; }
 
 /* === LOGO */
 #logo {
@@ -181,7 +181,7 @@ html { min-height:101% }
 #header div.menu { }
 
 #header .menu {
-    height: 28px;
+    height: 32px;
     padding: 30px 0 0;
     position: relative;
 }
