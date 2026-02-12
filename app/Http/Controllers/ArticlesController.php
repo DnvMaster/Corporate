@@ -35,7 +35,10 @@ class ArticlesController extends CorporateController
 
     public function getComments($take)
     {
-        $comments = $this->comments_repository->getAll(['text','name','email','domain','article_id','user_id'],$take);
+        $comments = $this->comments_repository->getAll(['id','text','name','email','domain','article_id','user_id'],$take);
+        if($comments) {
+            $comments->load('article','user');
+        }
         return $comments;
     }
 
@@ -54,7 +57,7 @@ class ArticlesController extends CorporateController
     {
         $articles = $this->articles_repository->getAll(['id','user_id','title','alias','description','images','created_at','category_id'],false,true);
         if($articles) {
-            // $articles->load('user','category','comments');
+            $articles->load('user','category','comments');
         }
         return $articles;
     } 

@@ -41,7 +41,7 @@
 		<script type="text/javascript" src="{{ asset('corporate/js/jquery.colorbox-min.js') }}"></script> <!-- nav -->
 		<script type="text/javascript" src="{{ asset('corporate/js/jquery.tweetable.js') }}"></script>
     </head>
-    <body class="no_js responsive page-template-home-php stretched">
+    <body class="no_js responsive {{ Route::currentRouteName () == 'home' ? 'page-template-home-php'  : ''}} stretched">
         <div class="bg-shadow">
             <div id="wrapper" class="group">
                 @yield('header')
