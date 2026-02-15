@@ -22,7 +22,7 @@ class ArticlesController extends CorporateController
         $this->comments_repository = $comments_repository;
         $this->template = 'corporate.articles';
     }
-    
+
     public function index($category_alias = false)
     {
         $getArticles = $this->getArticles($category_alias);
@@ -52,7 +52,9 @@ class ArticlesController extends CorporateController
     public function show($alias = false)
     {
         $article = $this->articles_repository->one($alias,['comments'=>true]);
-        dd($article);
+        if($article) {
+            $article->images = json_decode($article->images);
+        }
         $content = view('corporate.article_content', compact('article'))->render();
         $this->vars = Arr::add($this->vars,'content',$content);
 
@@ -74,6 +76,6 @@ class ArticlesController extends CorporateController
             $articles->load('user','category','comments');
         }
         return $articles;
-    } 
+    }
 
 }
