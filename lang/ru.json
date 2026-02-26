@@ -14,7 +14,7 @@
     "Current Password": "Текущий пароль",
     "Dashboard": "Панель",
     "Delete Account": "Удалить аккаунт",
-    "Email": "Адрес электронной почты",
+    "Email": "Адрес",
     "email": "Значение поля :attribute должно быть действительным электронным адресом.",
     "Email Password Reset Link": "Ссылка для сброса пароля",
     "Encrypted environment file already exists.": "Зашифрованный файл настроек окружения уже существует.",
@@ -39,7 +39,6 @@
     "Login": "Войти",
     "Logout": "Выйти",
     "Name": "Имя",
-    "name": "имя",
     "New Password": "Новый пароль",
     "Not Found": "Не найдено",
     "of": "из",
@@ -83,6 +82,7 @@
     "You are receiving this email because we received a password reset request for your account.": "Вы получили это письмо, потому что мы получили запрос на сброс пароля для Вашей учётной записи.",
     "You're logged in!": "Вы уже вошли.",
     "Your email address is unverified.": "Ваш адрес электронной почты не подтверждён.",
+    "Your comment":"Комментарий",
     "Latest_projects":"Последние проекты",
     "From_our_blog":"Последние записи блога",
     "Articles_no":"Извините. Статей пока нет",
@@ -105,5 +105,11 @@
     "Posts by":"Сообщение от",
     "Tags":"Теги",
     "Comment on article":"Комментарий к статье",
-    "Reply":"Ответить"
+    "Reply":"Ответить",
+    "Create":"Создать",
+    "Trackbacks and pingbacks":"Трекбек и Пингбек",
+    "No trackback or pingback available for this article":"Для этой статьи нет возможности вернуться назад или сделать пингбэк",
+    "Leave a":"Оставить",
+    "Cancel reply":"Отменить ответ",
+    "Website":"Веб-сайт"
 }

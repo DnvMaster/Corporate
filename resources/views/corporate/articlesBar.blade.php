@@ -1,5 +1,5 @@
 <div class="widget-first widget recent-posts">
-	<h3>{{ __('Recent posts') }}</h3>
+    <h3>{{ __('Recent posts') }}</h3>
 	<div class="recent-post group">
         @if(!$getPortfolios->isEmpty())
             @foreach($getPortfolios as $portfolio)
@@ -14,7 +14,7 @@
                     </div>
                 </div>
             @endforeach
-        @endif
+         @endif
 	</div>
 </div>
 @if(!$getComments->isEmpty())
@@ -25,9 +25,9 @@
 				<div class="the-post group">
 				    <div class="avatar">
 						@settings($hash, ($comment->email) ? md5($comment->email) : $comment->user->email)
-						<img  class="avatar" src="https://gravatar.com/avatar/{{ $hash}}?d=mm&s=55" alt="{{ $comment->name }}">   
+						<img  class="avatar" src="https://gravatar.com/avatar/{{ $hash}}?d=mm&s=55" alt="{{ $comment->name }}">
 				    </div>
-				    <span class="author"><strong><a href="#">{{ isset($comment->user) ? $comment->user->name : $comment->name }}</a></strong> in</span> 
+				    <span class="author"><strong><a href="#">{{ isset($comment->user) ? $comment->user->name : $comment->name }}</a></strong> in</span>
 				    <a class="title" href="{{ route('articles.show', $comment->article->id ) }}">{{ $comment->article->title }}</a>
 				    <p class="comment">
                     	 {{ $comment->text }} <a class="goto" href="{{ route('articles.show', $comment->article->id ) }}">&#187;</a>

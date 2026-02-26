@@ -24,7 +24,7 @@
         <link rel="stylesheet" id="cache-custom-css" href="{{ asset('corporate/css/cache-custom.css') }}" type="text/css" media="all">
         <link rel="stylesheet" id="custom-css" href="{{ asset('corporate/css/custom.css') }}" type="text/css" media="all">
         <link rel="stylesheet" id="google-fonts-css" href="http://fonts.googleapis.com/css?family=Oswald%7CDroid+Sans%7CPlayfair+Display%7COpen+Sans+Condensed%3A300%7CRokkitt%7CShadows+Into+Light%7CAbel%7CDamion%7CMontez&amp;ver=3.4.2" type="text/css" media="all">
-        <link rel='stylesheet' href="{{ asset('corporate/css/font-awesome.css') }}" type='text/css' media='all' />
+        <link rel='stylesheet' href="{{ asset('corporate/css/font-awesome.css') }}" type='text/css' media='all'>
         <script type="text/javascript" src="{{ asset('corporate/js/jquery.js') }}"></script>
         <script type="text/javascript" src="{{ asset('corporate/js/comment-reply.js') }}"></script>
         <script type="text/javascript" src="{{ asset('corporate/js/jquery.quicksand.js') }}"></script>
@@ -38,18 +38,20 @@
         <script type="text/javascript" src="{{ asset('corporate/js/jquery.aw-showcase.js') }}"></script>
         <script type="text/javascript" src="{{ asset('corporate/js/layerslider.kreaturamedia.jquery-min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('corporate/js/shortcodes.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('corporate/js/jquery.colorbox-min.js') }}"></script> <!-- nav -->
+		<script type="text/javascript" src="{{ asset('corporate/js/jquery.colorbox-min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('corporate/js/jquery.tweetable.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('corporate/js/myscript.js') }}"></script>
     </head>
     <body class="no_js responsive {{ Route::currentRouteName () == 'home' ? 'page-template-home-php'  : ''}} stretched">
         <div class="bg-shadow">
             <div id="wrapper" class="group">
                 @yield('header')
                 @yield('sliders')
+                <div class="wrap-result"></div>
 				<div id="primary" class="sidebar-{{ isset($bar) ? $bar : 'No bar' }}">
 				    <div class="inner group">
-				        @yield('content')
-				        @yield('bar')
+                        @yield('content')
+                        @yield('bar')
 				    </div>
 				</div>
 				@yield('footer')
@@ -57,6 +59,6 @@
         </div>
         <script type="text/javascript" src="{{ asset('corporate/js/jquery.custom.js') }}"></script>
         <script type="text/javascript" src="{{ asset('corporate/js/contact.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('corporate/js/jquery.mobilemenu.js') }}"></script> 
+        <script type="text/javascript" src="{{ asset('corporate/js/jquery.mobilemenu.js') }}"></script>
     </body>
 </html>
