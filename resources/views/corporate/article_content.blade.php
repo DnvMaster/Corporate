@@ -45,18 +45,19 @@
 			<h3 id="reply-title">{{ __('Leave a') }} & <span>{{ __('Reply') }}</span> <small><a rel="nofollow" id="cancel-comment-reply-link" href="#respond" style="display:none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ __('Cancel reply') }}</a></small></h3>
 			<form action="{{ route('comments.store') }}" method="post" id="commentform">
                 @if(!Auth::check())
-				    <p class="comment-form-author"><label for="author">{{ __('Name') }}</label> <input id="author" name="author" type="text" value="" size="30" aria-required="true"></p>
+				    <p class="comment-form-author"><label for="author">{{ __('Name') }}</label> <input id="name" name="name" type="text" value="" size="30" aria-required="true"></p>
 				    <p class="comment-form-email"><label for="email">{{ __('Email') }}</label> <input id="email" name="email" type="text" value="" size="30" aria-required="true"></p>
-				    <p class="comment-form-url"><label for="url">{{ __('Website') }}</label><input id="url" name="url" type="text" value="" size="30"></p>
+				    <p class="comment-form-url"><label for="url">{{ __('Website') }}</label><input id="url" name="domain" type="text" value="" size="30"></p>
 				@endif
-                <p class="comment-form-comment"><label for="comment">{{ __('Your comment') }}</label><textarea id="comment" name="comment" cols="45" rows="8"></textarea></p>
+                <p class="comment-form-comment"><label for="comment">{{ __('Your comment') }}</label><textarea id="comment" name="text" cols="45" rows="8"></textarea></p>
 				<div class="clear"></div>
 				<p class="form-submit">
                     {{ csrf_field() }}
                     <input id="comment_post_ID" type="hidden" name="comment_post_ID" value="{{ $article->id }}">
-                    <input id="comment_parent" type="hidden" name="comment_parent" value="">
-				    <input name="submit" type="submit" id="submit" value="{{ __('Create')}}">
-				</p>
+                    <input id="comment_parent" type="hidden" name="comment_parent" value="0">
+                    <input type="submit" id="submit" value="{{ __('Create')}}">
+                </p>
+                <div class="clear"></div>
 			</form>
 		</div>
 	</div>

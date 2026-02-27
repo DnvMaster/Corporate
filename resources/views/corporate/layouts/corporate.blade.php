@@ -6,6 +6,7 @@
         <title>{{ (isset($title)) ? $title : 'DnvMaster' }}</title>
         <meta name="keywords" content="{{ (isset($keywords)) ? $keywords : '' }}">
         <meta name="description" content="{{ (isset($description)) ? $description : '' }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('corporate/images/favicon.ico') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('corporate/images/favicon.ico') }}">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('corporate/apple-touch-icon-144x.png') }}">

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
+    protected $guarded = [];
     public function article(): BelongsTo
     {
         return $this->belongsTo(Article::class);
