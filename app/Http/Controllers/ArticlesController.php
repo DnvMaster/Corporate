@@ -25,6 +25,10 @@ class ArticlesController extends CorporateController
 
     public function index($category_alias = false)
     {
+        $this->title = 'Блог';
+        $this->keywords = 'Статьи, Изображения, Комментарии';
+        $this->descriptions = 'Авторские статьи в разделе блог';
+
         $getArticles = $this->getArticles($category_alias);
         $content = view('corporate.articles_content',compact('getArticles'))->render();
         $this->vars = Arr::add($this->vars,'content',$content);
@@ -55,6 +59,11 @@ class ArticlesController extends CorporateController
         if($article) {
             $article->images = json_decode($article->images);
         }
+
+        $this->title = $article->title;
+        $this->keywords = $article->keywords;
+        $this->descriptions = $article->descriptions;
+
         $content = view('corporate.article_content', compact('article'))->render();
         $this->vars = Arr::add($this->vars,'content',$content);
 
@@ -71,7 +80,7 @@ class ArticlesController extends CorporateController
             $id = Category::select('id')->where('alias',$alias)->first()->id;
              $where = ['category_id',$id];
         }
-        $articles = $this->articles_repository->getAll(['id','user_id','title','alias','description','images','created_at','category_id'],false,true,$where);
+        $articles = $this->articles_repository->getAll(['id','user_id','title','alias','description','images','created_at','category_id','keywords','descriptions'],false,true,$where);
         if($articles) {
             $articles->load('user','category','comments');
         }

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.2, user-scalable=yes">
         <title>{{ (isset($title)) ? $title : 'DnvMaster' }}</title>
         <meta name="keywords" content="{{ (isset($keywords)) ? $keywords : '' }}">
-        <meta name="description" content="{{ (isset($description)) ? $description : '' }}">
+        <meta name="description" content="{{ (isset($descriptions)) ? $descriptions : '' }}">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" type="image/x-icon" href="{{ asset('corporate/images/favicon.ico') }}">
         <link rel="icon" type="image/x-icon" href="{{ asset('corporate/images/favicon.ico') }}">

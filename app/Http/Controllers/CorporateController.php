@@ -8,9 +8,10 @@ use App\Repositories\MenusRepository;
 use Illuminate\Support\Arr;
 
 class CorporateController extends Controller
-{   
+{
     protected $title;
     protected $keywords;
+    protected $descriptions;
     protected $description;
     protected $menus_repository;
     protected $sliders_repository;
@@ -33,7 +34,7 @@ class CorporateController extends Controller
 
         $this->vars = Arr::add($this->vars, 'title', $this->title);
         $this->vars = Arr::add($this->vars, 'keywords', $this->keywords);
-        $this->vars = Arr::add($this->vars, 'description', $this->description);
+        $this->vars = Arr::add($this->vars, 'descriptions', $this->descriptions);
 
         $menu = $this->getMenu();
         $header = view('corporate.header', compact('menu'))->render();

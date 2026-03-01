@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
@@ -60,6 +61,17 @@ class CommentsController extends Controller
 
         $post = Article::find($data['article_id']);
         $post->comments()->save($comment);
+
+        // add comment display
+        $comment->load('user');
+
+        $data['id'] = $comment->id;
+        $data['email'] = (!empty($data['email'])) ? $data['email'] : $comment->user->email;
+        $data['name'] = (!empty($data['name'])) ? $data['name'] : $comment->user->name;
+        $data['hash'] = md5($data['email']);
+
+        $view_comment = view('corporate.content_comment',compact('data'))->render();
+        return Redirect::back()->with('error','Не удалось сохранить комментарий');
     }
 
     /**
