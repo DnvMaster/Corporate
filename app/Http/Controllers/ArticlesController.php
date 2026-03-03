@@ -36,6 +36,8 @@ class ArticlesController extends CorporateController
         $getPortfolios = $this->getPortfolios(config('settings.recent_portfolios'));
         $this->contentRightBar = view('corporate.articlesBar',compact('getPortfolios','getComments'));
         return $this->Output();
+
+        return $this->Output();
     }
 
     public function getComments($take)

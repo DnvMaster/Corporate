@@ -13,17 +13,17 @@
 									@endif
 								</a>
 				                <div class="work-overlay">
-				                    <h3><a href="{{ route('portfolios.show', $portfolio->id) }}">{{ $portfolio->title }}</a></h3>
+				                    <h3><a href="{{ route('portfolio.show', $portfolio->id) }}">{{ $portfolio->title }}</a></h3>
 				                    <p class="work-overlay-categories">
 										<img src="{{ asset('corporate/images/categories.png') }}" alt="Categories"> in: <a href="#">{{ $portfolio->filter->alias }}</a>
 									</p>
 				                </div>
 				            </div>
 				            <div class="work-description">
-				                <h2><a href="{{ route('portfolios.show',$portfolio->id) }}">{{ $portfolio->title }}!</a></h2>
+				                <h2><a href="{{ route('portfolio.show',$portfolio->id) }}">{{ $portfolio->title }}!</a></h2>
 				                <p class="work-categories">in: <a href="#">{{ $portfolio->filter->alias }}</a></p>
 				                <p>{{ str($portfolio->text)->limit(200) }}</p>
-				                <a href="{{ route('portfolios.show', $portfolio->id) }}" class="read-more">|| Read more</a>
+				                <a href="{{ route('portfolio.show', $portfolio->id) }}" class="read-more">|| Read more</a>
 				            </div>
 				        </div>
 				        <div class="clear"></div>
@@ -38,18 +38,18 @@
 				            <div class="overlay_wrapper">
 								@if(!empty($portfolio->images->mini))
 				            		<img src="{{ asset('corporate/images/projects/'.$portfolio->images->mini) }}" alt="{{ $portfolio->title }}" title="{{ $portfolio->title }}">
-								@endif						
+								@endif
 				                <div class="overlay">
 				                    <a class="overlay_img" href="{{ asset('corporate/images/projects/'.$portfolio->images->path) }}" rel="lightbox" title="{{ $portfolio->title }}"></a>
-				                    <a class="overlay_project" href="{{ route('portfolios.show',$portfolio->id) }}"></a>
+				                    <a class="overlay_project" href="{{ route('portfolio.show',$portfolio->id) }}"></a>
 				                    <span class="overlay_title">{{ $portfolio->title }}</span>
 				                </div>
 				            </div>
 				        </div>
-				        <h4><a href="{{ route('portfolios.show',$portfolio->id) }}">{{ $portfolio->title }}</a></h4>
+				        <h4><a href="{{ route('portfolio.show',$portfolio->id) }}">{{ $portfolio->title }}</a></h4>
 				        <p>{{ str($portfolio->text)->limit(200) }}</p>
-				    </div> 
-				@endforeach                 
+				    </div>
+				@endforeach
 				</div>
 			</div>
 			<div class="clear"></div>

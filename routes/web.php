@@ -7,10 +7,9 @@ use App\Http\Controllers\CommentsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[IndexController::class, 'index'])->name('home');
-Route::controller(PortfoliosController::class)->group(function()
-{
-    Route::get('portfolios/show/{id}', 'show')->name('portfolios.show');
-});
+
+Route::resource('portfolio', PortfoliosController::class);
+
 Route::controller(ArticlesController::class)->group(function()
 {
     Route::get('articles','index')->name('articles');

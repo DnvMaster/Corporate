@@ -44,7 +44,7 @@
 				</ul>
 			@endif
 		</div>
-		<script src="{{ asset('corporate/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('corporate/js/bootstrap.min.js') }}"></script>
 		@else
 		@include('corporate.articles_no')
 	@endif
