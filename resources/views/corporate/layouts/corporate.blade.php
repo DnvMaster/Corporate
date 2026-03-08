@@ -13,6 +13,7 @@
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x.png') }}">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('corporate/apple-touch-icon-72x.png') }}">
         <link rel="apple-touch-icon-precomposed" href="{{ asset('corporate/apple-touch-icon-57x.png') }}">
+        <link rel="stylesheet" href="{{ asset('corporate/css/bootstrap.min.css') }}">
         <link rel="stylesheet" type="text/css" media="all" href="{{ asset('corporate/css/reset.css') }}">
         <link rel="stylesheet" type="text/css" media="all" href="{{ asset('corporate/css/style.css') }}">
         <link rel="stylesheet" id="max-width-1024-css" href="{{ asset('corporate/css/max-width-1024.css') }}" type="text/css" media="screen and (max-width: 1240px)">
@@ -42,13 +43,22 @@
 		<script type="text/javascript" src="{{ asset('corporate/js/jquery.colorbox-min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('corporate/js/jquery.tweetable.js') }}"></script>
         <script type="text/javascript" src="{{ asset('corporate/js/myscript.js') }}"></script>
+        <script src="{{ asset('corporate/js/bootstrap.min.js') }}"></script>
     </head>
-    <body class="no_js responsive {{ Route::currentRouteName () == 'home' ? 'page-template-home-php'  : ''}} stretched">
+    <body class="no_js responsive {{ (Route::currentRouteName () == 'home') ||(Route::currentRouteName() == 'portfolios.index') ? 'page-template-home-php'  : ''}} stretched">
         <div class="bg-shadow">
             <div id="wrapper" class="group">
                 @yield('header')
                 @yield('sliders')
                 <div class="wrap-result"></div>
+                @if(Route::currentRouteName() == 'portfolios.index')
+                    <div id="page-meta">
+                        <div class="inner group">
+                            <h3>Welcome to my portfolio page</h3>
+                            <h4>... i hope you enjoy my works</h4>
+                        </div>
+                    </div>
+                @endif
 				<div id="primary" class="sidebar-{{ isset($bar) ? $bar : 'No bar' }}">
 				    <div class="inner group">
                         @yield('content')

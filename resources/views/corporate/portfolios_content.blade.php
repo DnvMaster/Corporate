@@ -29,7 +29,6 @@
 				    </div>
 				    <div class="clear"></div>
                 @endforeach
-                <link rel="stylesheet" href="{{ asset('corporate/css/bootstrap.min.css') }}">
                 <div class="general-pagination group">
 			        @if($getPortfolios->lastPage() > 1)
 				        <ul class="pagination">
@@ -49,7 +48,6 @@
 				        </ul>
 			        @endif
 		        </div>
-                <script src="{{ asset('corporate/js/bootstrap.min.js') }}"></script>
             </div>
         @endif
     <div class="clear"></div>

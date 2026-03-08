@@ -4,6 +4,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\PortfoliosController;
 use App\Http\Controllers\ArticlesController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\ContactsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/',[IndexController::class, 'index'])->name('home');
@@ -16,4 +17,5 @@ Route::controller(ArticlesController::class)->group(function()
     Route::get('articles/show/{id}','show')->name('articles.show');
     Route::get('articles/{category}', 'show')->name('articles.category');
 });
-Route::resource('comments', CommentsController::class)->only(['store']);
+
+Route::match(['get', 'post'], '/contacts', [ContactsController::class, 'index'])->name('contact');

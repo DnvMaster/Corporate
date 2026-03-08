@@ -14,7 +14,9 @@
     "Current Password": "Текущий пароль",
     "Dashboard": "Панель",
     "Delete Account": "Удалить аккаунт",
-    "Email": "Адрес",
+    "Email": "Адрес эл.почты",
+    "Message":"Сообщение",
+    "Send Message":"Отправить сообщение",
     "email": "Значение поля :attribute должно быть действительным электронным адресом.",
     "Email Password Reset Link": "Ссылка для сброса пароля",
     "Encrypted environment file already exists.": "Зашифрованный файл настроек окружения уже существует.",
@@ -38,7 +40,7 @@
     "Log Out": "Выйти",
     "Login": "Войти",
     "Logout": "Выйти",
-    "Name": "Имя",
+    "Name":"Имя",
     "New Password": "Новый пароль",
     "Not Found": "Не найдено",
     "of": "из",
@@ -114,5 +116,8 @@
     "Website":"Веб-сайт",
     "Filter":"Фильтер",
     "Customer":"Заказчик",
-    "Year":"Год"
+    "Year":"Год",
+    "Other Projects":"Последние проекты",
+    "This is the name":"Введите своё имя/логин",
+    "This is a field email":"Введите адрес эл.почты"
 }

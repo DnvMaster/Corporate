@@ -29,9 +29,9 @@ class PortfoliosController extends CorporateController
         return $this->Output();
     }
 
-    public function getPortfolios()
+    public function getPortfolios($take = false, $paginate = true)
     {
-        $portfolios = $this->portfolios_repository->getAll('*',false,true);
+        $portfolios = $this->portfolios_repository->getAll('*',false,$paginate);
         if($portfolios) {
             $portfolios->load('filter');
         }
@@ -59,7 +59,17 @@ class PortfoliosController extends CorporateController
      */
     public function show(string $id)
     {
-        //
+        $portfolio = $this->portfolios_repository->getAll()->find($id);
+        $portfolios = $this->getPortfolios(config('settings.other_portfolios'),false);
+
+        $this->title = $portfolio->title;
+        $this->keywords = $portfolio->keywords;
+        $this->descriptions = $portfolio->descriptions;
+
+        $content = view('corporate.portfolio_content', compact('portfolios','portfolio'))->render();
+        $this->vars = Arr::add($this->vars,'content',$content);
+
+        return $this->Output();
     }
 
     /**

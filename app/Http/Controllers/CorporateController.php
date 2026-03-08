@@ -45,6 +45,11 @@ class CorporateController extends Controller
             $this->vars = Arr::add($this->vars,'rightBar',$rightBar);
         }
 
+        if($this->contentLeftBar) {
+            $leftBar = view('corporate.leftBar')->with('content_leftBar',$this->contentLeftBar)->render();
+            $this->vars = Arr::add($this->vars,'leftBar',$leftBar);
+        }
+
         $this->vars = Arr::add($this->vars,'bar',$this->bar);
 
         $footer = view('corporate.footer')->render();

@@ -26,7 +26,7 @@ abstract class Repository
         if($result->isEmpty()) {
             return false;
         }
-        $result->transform(function($item,$key) 
+        $result->transform(function($item,$key)
         {
             if(is_string($item->images) && is_object(json_decode($item->images)) && json_last_error() == JSON_ERROR_NONE) {
                 $item->images = json_decode($item->images);
@@ -36,7 +36,7 @@ abstract class Repository
         return $result;
     }
 
-    public function one($alias,$attr = array())
+    public function one($alias, $attr = array())
     {
         return Article::where('alias',$alias)->first();
     }
