@@ -24,7 +24,7 @@ class CorporateController extends Controller
     protected $contentRightBar = false;
     protected $bar = '';
 
-    protected function __construct(MenusRepository $menus_repository)
+    public function __construct(MenusRepository $menus_repository)
     {
         $this->menus_repository = $menus_repository;
     }
@@ -58,7 +58,7 @@ class CorporateController extends Controller
         return view($this->template, $this->vars);
     }
 
-    protected function getMenu()
+    public function getMenu()
     {
         $menu = $this->menus_repository->getAll();
         $menuBuilder = Menu::make('MyNav', function($m) use($menu) {
